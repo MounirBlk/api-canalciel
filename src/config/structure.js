@@ -32,5 +32,6 @@ module.exports = {
     logger: {
         host: '',
         port: '',
-    }
+    },
+    keyToken: ''
 };

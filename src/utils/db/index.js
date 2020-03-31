@@ -6,10 +6,11 @@ const mongoose = require('mongoose'),
 mongoose.Promise = global.Promise;
 mongoose.set('useCreateIndex', true);
 
-const connectionMongo = mongoose.connect(config.database.mongoose.uri, {
+const connectionMongo = mongoose.connect(config.database.mongodb.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
+
 const connectionMysql = mysql.createConnection({
     host: config.database.mysql.host,
     user: config.database.mysql.user,
@@ -26,7 +27,7 @@ connectionMysql.connect(function(err) {
     console.log('connected as id ' + connectionMysql.threadId);
 });
 
-
+// Check connection sucess
 connectionMongo
     .then(db => {
         logger.info(

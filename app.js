@@ -1,5 +1,6 @@
 const cors = require('cors'), // CORS est un package node.js pour fournir un middleware sous Express qui peut être utilisé pour activer CORS avec diverses options.
     express = require('express'),
+    db = require('./src/utils/db'),
     route = require('./src/routes'), // Apport des route créé
     config = require('./src/config'),
     bodyParser = require('body-parser'),

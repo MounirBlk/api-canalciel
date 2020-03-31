@@ -9,6 +9,7 @@ module.exports = {
             user: '',
             password: '',
             database: '',
+
         },
         mongodb: {
             url: '',

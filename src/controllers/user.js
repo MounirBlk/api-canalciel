@@ -3,6 +3,7 @@ exports.login = (req, res) => {
 }
 
 exports.register = (req, res) => {
+    const data = Object.assign({ email: '', password: '' }, req.body)
     res.status(200).send('OK.');
 }
 

@@ -7,7 +7,6 @@ const cors = require('cors'), // CORS est un package node.js pour fournir un mid
 
 
 const api = express();
-route(api);
 
 api.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -25,15 +24,12 @@ api.use(bodyParser.urlencoded({
     extended: false
 }))
 
-api.get('auth', (err, req, res, next) => {
-    res.status(200).send('Missing authentication credentials.');
-});
-
 api.use((err, req, res, next) => {
     if (err.name === 'UnauthorizedError')
         res.status(401).send('Missing authentication credentials.');
 });
 
+route(api);
 
 api.listen(config.server.port, err => {
     if (err) {
@@ -42,7 +38,6 @@ api.listen(config.server.port, err => {
     }
 
     logger.info(
-        `API is now running on port ${config.server.port} in ${config.server.env} mode \n
-        Lancé le site web sur votre navigateur http://localhost:${config.server.port}`
+        `API is now running on port ${config.server.port} in ${config.server.env} mode \n Lancé le site web sur votre navigateur http://localhost:${config.server.port}`
     );
 });
